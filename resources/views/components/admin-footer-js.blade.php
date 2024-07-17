@@ -59,7 +59,7 @@
                             position: "br"
                         });
                         $("#submitButton").html(btn);
-                        if(result.reload != 'undefined') {
+                        if(result.data.reload) {
                             location.reload();
                         }
                     },
@@ -77,6 +77,36 @@
     });
 
     function deleteData( id, table ) {
-        
+        if(confirm('Are you sure want to delete?') == true) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('admin/deleteData') }}/"+id+"/"+table,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    $(".delete_"+id+" i").removeClass('fadeIn animated bx bx-trash').addClass('spinner-border spinner-border-sm');
+                },
+                success: function( result ) {
+                    SnackBar({
+                        status:result.status,
+                        message:result.message,
+                        position: "br"
+                    });
+                    $(".delete_"+id+" i").addClass('fadeIn animated bx bx-trash').removeClass('spinner-border spinner-border-sm');
+                    if(result.data.reload) {
+                        location.reload();
+                    }
+                },
+                error: function(result) {
+                    SnackBar({
+                        status:result.status,
+                        message:result.message,
+                        position: "br"
+                    });
+                    $(".delete_"+id+" i").addClass('fadeIn animated bx bx-trash').removeClass('spinner-border spinner-border-sm');
+                }
+            });
+        }
     }
 </script>

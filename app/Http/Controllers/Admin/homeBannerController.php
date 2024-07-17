@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HomeBanner;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 use Validator;
 
@@ -20,7 +21,7 @@ class homeBannerController extends Controller
     public function index()
     {
         $data = HomeBanner::get();
-        return view('admin//HomeBanner/homeBanners', get_defined_vars());
+        return view('admin/HomeBanner/homeBanners', get_defined_vars());
     }
 
     /**
@@ -53,13 +54,13 @@ class homeBannerController extends Controller
             if( $request->hasfile('image') ) {
                 if( $request->id > 0 ) {
                     $image = HomeBanner::where('id', $request->id)->first();
-                    $image_path = 'images/'.$image->image;
+                    $image_path = $image->image;
                     if( File::exists($image_path) ) {
                         File::delete($image_path);
                     }
                 }
-                $image_name = time() . '.' . $request->image->extension();
-                $request->image->move( public_path('images/'), $image_name );
+                $image_name = 'images/homebanner/' . time() . '.' . $request->image->extension();
+                $request->image->move( public_path('images/homebanner/'), $image_name );
             } else if( $request->id > 0 ) {
                 $image_name = HomeBanner::where('id', $request->id)->pluck('image')->first();
             }
