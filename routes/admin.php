@@ -40,6 +40,10 @@ Route::post('/updateAttributeName', [attributeController::class, 'storeAttribute
 Route::get('/attributeValue', [attributeController::class, 'indexAttributeValue']);
 Route::post('/updateAttributeValue', [attributeController::class, 'storeAttributeValue']);
 
-// Manage Attribute Value
+// Manage Category
 Route::get('/category', [categoryController::class, 'index']);
 Route::post('/updateCategory', [categoryController::class, 'store']);
+
+// Manage Category Attribute
+Route::get('/categoryAttribute', [categoryController::class, 'indexCategoryAttribute']);
+Route::post('/updateCategoryAttribute', [categoryController::class, 'storeCategoryAttribute']);

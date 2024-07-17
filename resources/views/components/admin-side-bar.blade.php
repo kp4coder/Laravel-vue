@@ -55,11 +55,17 @@
                 </ul>
             </li>
             <li>
-                <a href="{{ url('admin/category') }}">
-                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='bx bx-cart'></i>
                     </div>
                     <div class="menu-title">Manage Category</div>
                 </a>
+                <ul>
+                    <li> <a href="{{ url('admin/category') }}"><i class="bx bx-right-arrow-alt"></i>Category</a>
+                    </li>
+                    <li> <a href="{{ url('admin/categoryAttribute') }}"><i class="bx bx-right-arrow-alt"></i>Category Attribute</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="menu-label">Others</li>
