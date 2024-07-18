@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\CategoryAttribute;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Validator;
 use App\Traits\ApiResponse;
@@ -74,9 +76,10 @@ class categoryController extends Controller
      */
     public function indexCategoryAttribute()
     {
-        $data = Category::with('attribute')->get();
-        prx($data);
-        return view('admin/Category/category', get_defined_vars());
+        $data = CategoryAttribute::with('category','attribute')->get();
+        $category = Category::get();
+        $attribute = Attribute::get();
+        return view('admin/Category/categoryAttribute', get_defined_vars());
     }
 
     /**
@@ -88,29 +91,19 @@ class categoryController extends Controller
     public function storeCategoryAttribute(Request $request)
     {
         $validation = Validator::make( $request->all(), [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
-            // 'parent_category_id' => 'exists:categories,id',
-            'image' => 'mimes:jpeg,png,jpg,gif|max:5120'
+            'category_id' => 'required|string|max:255',
+            'attribute_id' => 'required|string|max:255',
         ]);
         
         if($validation->fails()) {
             return $this->error([], $validation->errors()->first(), 400 );
         } else {
-            if( $request->id ) {
-                $image = Category::find( $request->id );
-                $image_name = $this->saveImage($request->image, $image->image, 'images/category');
-            } else {
-                $image_name = $this->saveImage($request->image, '', 'images/category');
-            }
 
-            Category::updateOrCreate(
+            CategoryAttribute::updateOrCreate(
                 ['id' => $request->post('id') ],
                 [
-                    'name' => $request->name,
-                    'slug' => $request->slug,
-                    'parent_category_id' => $request->parent_category_id,
-                    'image' => $image_name
+                    'category_id' => $request->category_id,
+                    'attribute_id' => $request->attribute_id,
                 ]
             );   
 

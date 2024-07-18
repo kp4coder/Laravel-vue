@@ -42,6 +42,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ url('admin/brand') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    </div>
+                    <div class="menu-title">Manage Brand</div>
+                </a>
+            </li>
+            <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><i class='bx bx-cart'></i>
                     </div>
@@ -66,6 +73,25 @@
                     <li> <a href="{{ url('admin/categoryAttribute') }}"><i class="bx bx-right-arrow-alt"></i>Category Attribute</a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><i class='bx bx-cart'></i>
+                    </div>
+                    <div class="menu-title">Manage Products</div>
+                </a>
+                <ul>
+                    <li> <a href="{{ url('admin/product') }}"><i class="bx bx-right-arrow-alt"></i>Products</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="{{ url('admin/tax') }}">
+                    <div class="parent-icon"><i class='bx bx-cookie'></i>
+                    </div>
+                    <div class="menu-title">Manage Tax</div>
+                </a>
             </li>
 
             <li class="menu-label">Others</li>
