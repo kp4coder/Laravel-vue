@@ -3,7 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\CategoryAttribute;
+use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductAttr;
+use App\Models\productAttrImages;
+use App\Models\Size;
+use App\Models\Tax;
 use Illuminate\Http\Request;
 
 use App\Traits\ApiResponse;
@@ -24,6 +32,32 @@ class productController extends Controller
     {
         $data = Product::get();
         return view('admin/Product/product', get_defined_vars());
+    }
+
+    public function viewProduct( $id=0 ) {
+        if( $id == 0 ) {
+            $data = new Product();
+            $product_attr = new ProductAttr();
+            $product_attr_image = new productAttrImages();
+
+            $cat = Category::get();
+            $brand = Brand::get();
+            $color = Color::get();
+            $size = Size::get();
+            $tax = Tax::get();
+        } else {
+            $validation = Validator::make(['id' => $id], [
+                'id' => 'required|exists:products,id',
+            ]);
+
+            if( $validation->fails() ) {
+                return redirect()->back();
+            } else {
+                $data = Product::where('id', $id)->first();
+            }
+        }
+
+        return view('admin/Product/manageProduct', get_defined_vars());
     }
 
     /**
@@ -63,5 +97,13 @@ class productController extends Controller
 
             return $this->success( ['reload' => true], 'Successfully saved.'); 
         }
+    }
+
+    public function getAttributes(Request $request) {
+        $category_id = $request->category_id;
+        $data = CategoryAttribute::where('category_id', $category_id)->with('attribute')->get();
+
+        return $this->success( $data, 'successfully');
+        prx($data);
     }
 }

@@ -17,7 +17,7 @@
             </div>
             <div class="ms-auto">
                 <div class="col">
-                    <button type="button" onclick="saveData('','','','')" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addModal"><i class="fadeIn animated bx bx-plus"></i>Add new</button>
+                    <a href="{{ url('admin/manageProduct') }}/0" class="btn btn-outline-success" ><i class="fadeIn animated bx bx-plus"></i>Add new</a>
                 </div>
                 {{--
                 <div class="btn-group">
@@ -57,9 +57,9 @@
                                 <td>{{ $row->created_at }}</td>
                                 <td>{{ $row->updated_at }}</td>
                                 <td>
-                                    <button type="button" onclick="saveData('{{ $row->id }}', '{{ $row->text }}', '{{ $row->link }}', '{{ asset($row->image) }}')" class="btn" data-bs-toggle="modal" data-bs-target="#addModal">
+                                    <a href="{{ url('manageProduct') }}/{{ $row->id }}" class="btn" >
                                         <i class="fadeIn animated bx bx-edit"></i>
-                                    </button>
+                                    </a>
                                     <button type="button" onclick="deleteData('{{ $row->id }}', 'products' )" class="btn delete_{{ $row->id }}">
                                         <i class="fadeIn animated bx bx-trash"></i>
                                     </button>

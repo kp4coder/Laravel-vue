@@ -61,4 +61,6 @@ Route::post('/updateTax', [taxController::class, 'store']);
 
 // Manage product
 Route::get('/product', [productController::class, 'index']);
+Route::get('/manageProduct/{id}', [productController::class, 'viewProduct']);
 Route::post('/updateProduct', [productController::class, 'store']);
+Route::post('/getAttributes', [productController::class, 'getAttributes']);

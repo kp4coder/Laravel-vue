@@ -459,6 +459,8 @@
 	</div>
 	<!--end switcher-->
 	<x-admin-footer-js></x-admin-footer-js>
+
+	@yield('js')
 </body>
 
 </html>
