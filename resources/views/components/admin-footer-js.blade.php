@@ -17,24 +17,32 @@
 <!--app JS-->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/snackbar/dist/js-snackbar.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/Multiple-Select-With-Checkboxes/src/jquery.multi-select.js') }}"></script>
 
-<script>
-		$(document).ready(function() {
-			$('#example').DataTable();
-		  } );
-	</script>
-	<script>
-		$(document).ready(function() {
-			var table = $('#example2').DataTable( {
-				lengthChange: false,
-				buttons: [ 'copy', 'excel', 'pdf', 'print']
-			} );
-		 
-			table.buttons().container()
-				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
-		} );
-	</script>
-<script>
+<script type="text/javascript">
+    $(function () {
+        $('.multiSelect').multiSelect();
+    });
+</script>
+
+<script type="text/javascript">
+    /*** For initialize the data table */
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    $(document).ready(function() {
+        var table = $('#example2').DataTable( {
+            lengthChange: false,
+            buttons: [ 'copy', 'excel', 'pdf', 'print']
+        } );
+        
+        table.buttons().container()
+            .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+    } );
+</script>
+
+<script type="text/javascript">
+    /*** For save data */
     $(document).ready( function() {
         $("#formSubmit").on('submit', function(e) {
             if( $(this).parsley().validate() ) {
@@ -75,7 +83,7 @@
             }
         });
     });
-
+    /*** For Delete Data */
     function deleteData( id, table ) {
         if(confirm('Are you sure want to delete?') == true) {
             $.ajax({

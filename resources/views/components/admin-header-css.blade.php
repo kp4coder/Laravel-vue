@@ -24,6 +24,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}" />
 	<link rel="stylesheet" href="{{ asset('assets/snackbar/dist/js-snackbar.min.css') }}" />
+	<link rel="stylesheet" href="{{ asset('assets/plugins/Multiple-Select-With-Checkboxes/src/example-styles.css') }}" />
+	
 	
 	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
 </head>

@@ -101,7 +101,7 @@ class productController extends Controller
 
     public function getAttributes(Request $request) {
         $category_id = $request->category_id;
-        $data = CategoryAttribute::where('category_id', $category_id)->with('attribute')->get();
+        $data = CategoryAttribute::where('category_id', $category_id)->with('attribute', 'values')->get();
 
         return $this->success( $data, 'successfully');
         prx($data);
