@@ -53,11 +53,11 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->name }}</td>
-                                <td>{{ $row->image }}</td>
+                                <td><img src="{{ asset($row->image) }}" height="100" /></td>
                                 <td>{{ $row->created_at }}</td>
                                 <td>{{ $row->updated_at }}</td>
                                 <td>
-                                    <a href="{{ url('manageProduct') }}/{{ $row->id }}" class="btn" >
+                                    <a href="{{ url('admin/manageProduct') }}/{{ $row->id }}" class="btn" >
                                         <i class="fadeIn animated bx bx-edit"></i>
                                     </a>
                                     <button type="button" onclick="deleteData('{{ $row->id }}', 'products' )" class="btn delete_{{ $row->id }}">
@@ -75,60 +75,4 @@
 </div>
 <!--end page wrapper -->
 
-<!-- Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <form action="{{ url('admin/updateHomeBanner') }}" id="formSubmit" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Add New</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row mb-3">
-                        <label for="Text" class="col-sm-3 col-form-label">Text</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="enter_text" name="text" placeholder="Enter Your Text" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="link" class="col-sm-3 col-form-label">Link</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="enter_link" name="link" placeholder="https://domain.com/" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="image" class="col-sm-3 col-form-label">Image</label>
-                        <div class="col-sm-9">
-                            <input type="file" class="form-control" id="enter_image" name="image" required>
-                            <div id="showImage"> <img src="" height="100px" /></div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="id" id="enter_id" value="0" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <div id="submitButton"><input type="submit" class="btn btn-primary px-4" value="Save Changes" /></div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-    function saveData(id, text, link, image) {
-        $("#enter_id").val(id);
-        $("#enter_text").val(text);
-        $("#enter_link").val(link);
-        console.log("{{ URL::asset('images') }}/"+image);
-        if( image == '' ) {
-            jQuery("#showImage").hide();
-        } else {
-            jQuery("#enter_image").removeAttr('required');
-            jQuery("#showImage img").attr('src', image);
-            jQuery("#showImage").show();
-        }
-    }
-</script>
 @endsection

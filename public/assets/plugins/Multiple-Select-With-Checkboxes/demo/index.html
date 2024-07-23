@@ -1,18 +1,20 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>jquery-multi-select</title>
     <link rel="stylesheet" type="text/css" href="../src/example-styles.css">
     <link rel="stylesheet" type="text/css" href="demo-styles.css">
 </head>
+
 <body>
 
     <form class="demo-example">
         <label for="people">Select people:</label>
         <select id="people" name="people" multiple>
             <option value="alice">Alice</option>
-            <option value="bob">Bob</option>
+            <option value="bob" selected>Bob</option>
             <option value="carol">Carol</option>
         </select>
     </form>
@@ -70,30 +72,28 @@
     <script type="text/javascript" src="../src/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="../src/jquery.multi-select.js"></script>
     <script type="text/javascript">
-    $(function(){
-        $('#people').multiSelect();
-        $('#ice-cream').multiSelect();
-        $('#line-wrap-example').multiSelect({
-            positionMenuWithin: $('.position-menu-within')
-        });
-        $('#categories').multiSelect({
-            noneText: 'All categories',
-            presets: [
-                {
+        $(function() {
+            $('#people').multiSelect();
+            $('#ice-cream').multiSelect();
+            $('#line-wrap-example').multiSelect({
+                positionMenuWithin: $('.position-menu-within')
+            });
+            $('#categories').multiSelect({
+                noneText: 'All categories',
+                presets: [{
                     name: 'All categories',
                     all: true
-                },
-                {
+                }, {
                     name: 'My categories',
                     options: ['a', 'c']
-                }
-            ]
+                }]
+            });
+            $('#modal-example').multiSelect({
+                'modalHTML': '<div class="multi-select-modal">'
+            });
         });
-        $('#modal-example').multiSelect({
-            'modalHTML': '<div class="multi-select-modal">'
-        });
-    });
     </script>
 
 </body>
+
 </html>

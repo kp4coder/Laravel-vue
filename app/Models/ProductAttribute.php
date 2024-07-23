@@ -14,4 +14,8 @@ class ProductAttribute extends Model
         'category_id',
         'attribute_value_id'
     ];
+
+    public function attribute_values() {
+        return $this->hasMany(AttributeValue::class, 'id', 'attribute_value_id' )->with('singleAttribute');
+    }
 }
