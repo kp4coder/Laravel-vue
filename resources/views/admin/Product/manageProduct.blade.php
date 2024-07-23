@@ -153,7 +153,7 @@
                                         <div class="col-sm-2 mt-3">
                                             <input type="file" name="attr_image_0[]" class="form-control" id="attr_image" />
                                             <img src="{{ asset($image->image) }}" width="100%" class="mt-3"/>
-                                            @if( $countImg > 1 ) <button class="removeImage form-control btn-danger" type="button" >Remove</button> @endif
+                                            @if( $countImg > 1 ) <button class="removeImage form-control btn-danger" type="button" onclick="deleteData('{{ $image->id }}', 'product_attr_images' )" >Remove</button> @endif
                                         </div>
                                         @endforeach
                                     </div>
@@ -253,9 +253,7 @@
 
     $(document).on("click", ".removeImage", function() {
         jQuery(this).parent().remove();
-    });
-
-    
+    }); 
 
     $(document).on("change", "#category_id", function() {
         var category_id = $(this).val();
