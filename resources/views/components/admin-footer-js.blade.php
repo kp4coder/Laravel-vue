@@ -70,6 +70,9 @@
                         if(result.data.reload) {
                             location.reload();
                         }
+                        if(result.data.url) {
+                            location.href = result.data.url;
+                        }
                     },
                     error: function(result) {
                         SnackBar({

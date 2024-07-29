@@ -155,6 +155,7 @@ class productController extends Controller
                         productAttrImages::where( [ 'product_id' => $productId, 'product_attr_id' => $productAttrId ] ) ->delete();
                         if( !empty($request->$imgkey) ) {
                             foreach( $request->$imgkey as $image) {
+
                                 $image_name = $this->saveImage($image, '', 'images/productsAttr');
                                 productAttrImages::create(
                                     [
@@ -173,7 +174,7 @@ class productController extends Controller
                 }
 
                 DB::commit();
-                return $this->success( ['reload' => false, 'product_id' => $productId], 'Successfully saved.'); 
+                return $this->success( ['url' => url('/admin/manageProduct/'.$productId), 'product_id' => $productId], 'Successfully saved.'); 
             }
 
         } catch (\Throwable $th) {
