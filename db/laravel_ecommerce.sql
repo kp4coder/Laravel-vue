@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2024 at 03:56 PM
+-- Generation Time: Jul 30, 2024 at 05:09 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -282,6 +282,18 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Models\\User', 2, 'API Token', 'c65a7723be7901b3fa8275db87b1ea9e528e89a4b7e3d9ebceef77ae34158a38', '[\"*\"]', NULL, NULL, '2024-07-30 00:42:47', '2024-07-30 00:42:47'),
+(2, 'App\\Models\\User', 3, 'API Token', '13737c1317004ecf5bed5d01f4c45dd6097e2ddb92353da086e729796c45c005', '[\"*\"]', NULL, NULL, '2024-07-30 00:46:50', '2024-07-30 00:46:50'),
+(3, 'App\\Models\\User', 4, 'API Token', '50becc8188bdd2e87716d531546c28678d849d6ff94f4fb0c390399423b7dcc7', '[\"*\"]', NULL, NULL, '2024-07-30 00:47:51', '2024-07-30 00:47:51'),
+(4, 'App\\Models\\User', 5, 'API Token', '60e105da0746542d7d74a4551b5d288e84e9dc6fb565333ade09ad297b2afbb5', '[\"*\"]', NULL, NULL, '2024-07-30 00:49:00', '2024-07-30 00:49:00'),
+(6, 'App\\Models\\User', 1, 'API Token', 'fea9476eb0a510eab2f53c500b60a06a1bd774fbe761dc1102039bfe0a7f5802', '[\"*\"]', '2024-07-30 03:08:19', NULL, '2024-07-30 01:19:32', '2024-07-30 03:08:19'),
+(7, 'App\\Models\\User', 1, 'API Token', '064ef4f7fef4e9089c50065005ec02f38d012c14592d6b2726949f58abc1e2a1', '[\"*\"]', '2024-07-30 03:09:09', NULL, '2024-07-30 03:08:55', '2024-07-30 03:09:09');
+
 -- --------------------------------------------------------
 
 --
@@ -303,6 +315,18 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `slug`, `image`, `item_code`, `keywords`, `description`, `category_id`, `brand_id`, `tax_id`, `created_at`, `updated_at`) VALUES
+(11, 'test1', 'test2', 'images/products/1721727520.jpg', 'test3', 'test4', '<p>descr</p>', 5, 3, 3, '2024-07-23 04:08:40', '2024-07-23 05:24:37'),
+(12, 'test name 2', 'slug-2', 'images/products/1721742555.jpg', 'itemcode2', 'keywords2, k3', NULL, 6, 3, 3, '2024-07-23 08:19:15', '2024-07-23 08:19:15'),
+(13, 'test3', 'test3', 'images/products/1722244282.png', 'test3', 'tset633', NULL, 5, 3, 4, '2024-07-29 03:41:22', '2024-07-29 03:41:22'),
+(14, 'test4', 'test4', 'images/products/1722244579.png', 'test4', 'test4', NULL, 6, 3, 2, '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(15, 'test5', 'test5', 'images/products/1722244770.png', 'test5', 'test5', '<p>test 654987</p>', 5, 3, 2, '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(16, 'test6', 'test6', 'images/products/1722245135-mobile-accessories.jpg.jpg', 'test6', 'test6', NULL, 5, 4, 2, '2024-07-29 03:55:35', '2024-07-29 03:55:35');
+
 -- --------------------------------------------------------
 
 --
@@ -317,6 +341,36 @@ CREATE TABLE `product_attributes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_attributes`
+--
+
+INSERT INTO `product_attributes` (`id`, `product_id`, `category_id`, `attribute_value_id`, `created_at`, `updated_at`) VALUES
+(46, 11, 5, 3, '2024-07-23 08:16:42', '2024-07-23 08:16:42'),
+(47, 11, 5, 4, '2024-07-23 08:16:42', '2024-07-23 08:16:42'),
+(69, 12, 6, 3, '2024-07-23 08:29:35', '2024-07-23 08:29:35'),
+(70, 12, 6, 4, '2024-07-23 08:29:35', '2024-07-23 08:29:35'),
+(71, 12, 6, 5, '2024-07-23 08:29:35', '2024-07-23 08:29:35'),
+(102, 13, 5, 13, '2024-07-29 03:44:29', '2024-07-29 03:44:29'),
+(103, 13, 5, 14, '2024-07-29 03:44:29', '2024-07-29 03:44:29'),
+(104, 13, 5, 15, '2024-07-29 03:44:29', '2024-07-29 03:44:29'),
+(105, 13, 5, 16, '2024-07-29 03:44:29', '2024-07-29 03:44:29'),
+(106, 13, 5, 3, '2024-07-29 03:44:29', '2024-07-29 03:44:29'),
+(107, 13, 5, 4, '2024-07-29 03:44:29', '2024-07-29 03:44:29'),
+(108, 14, 6, 3, '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(109, 14, 6, 4, '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(110, 14, 6, 5, '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(111, 15, 5, 13, '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(112, 15, 5, 14, '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(113, 15, 5, 15, '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(114, 15, 5, 16, '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(115, 16, 5, 13, '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(116, 16, 5, 14, '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(117, 16, 5, 15, '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(118, 16, 5, 3, '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(119, 16, 5, 4, '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(120, 16, 5, 8, '2024-07-29 03:55:35', '2024-07-29 03:55:35');
 
 -- --------------------------------------------------------
 
@@ -341,6 +395,24 @@ CREATE TABLE `product_attrs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `product_attrs`
+--
+
+INSERT INTO `product_attrs` (`id`, `product_id`, `color_id`, `size_id`, `sku`, `mrp`, `price`, `qty`, `len`, `breadth`, `height`, `weight`, `created_at`, `updated_at`) VALUES
+(1, 11, 3, 3, '1', 2.00, 3.00, 4, '5', '6', '7', '8', '2024-07-23 05:24:37', '2024-07-23 05:24:37'),
+(2, 11, 2, 4, '11', 22.00, 33.00, 44, '55', '66', '77', '88', '2024-07-23 05:24:37', '2024-07-23 05:24:37'),
+(5, 12, 3, 3, 'slug-21', 21.00, 21.00, 1, '5', '6', '7', '9', '2024-07-23 08:19:15', '2024-07-23 08:19:15'),
+(6, 12, 4, 4, 'slug-22', 22.00, 22.00, 2, '9', '8', '7', '6', '2024-07-23 08:19:16', '2024-07-23 08:19:16'),
+(7, 13, 2, 2, '1', 2.00, 3.00, 4, '5', '6', '7', '8', '2024-07-29 03:41:22', '2024-07-29 03:41:22'),
+(8, 13, 3, 3, '22', 33.00, 44.00, 55, '66', '77', '88', '99', '2024-07-29 03:41:22', '2024-07-29 03:41:22'),
+(9, 14, 2, 2, '1', 2.00, 3.00, 4, '5', '6', '7', '8', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(10, 14, 2, 2, '11', 22.00, 33.00, 44, '55', '66', '77', '88', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(11, 15, 2, 2, '1', 2.00, 3.00, 4, '5', '6', '7', '8', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(12, 15, 3, 3, '11', 22.00, 33.00, 44, '55', '66', '77', '88', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(13, 16, 2, 2, '1', 2.00, 3.00, 4, '5', '6', '7', '8', '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(14, 16, 3, 3, '12', 23.00, 33.00, 44, '55', '66', '77', '88', '2024-07-29 03:55:36', '2024-07-29 03:55:36');
+
 -- --------------------------------------------------------
 
 --
@@ -355,6 +427,33 @@ CREATE TABLE `product_attr_images` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_attr_images`
+--
+
+INSERT INTO `product_attr_images` (`id`, `product_id`, `product_attr_id`, `image`, `created_at`, `updated_at`) VALUES
+(21, 12, 5, 'images/productsAttr/1721743175.jpg', '2024-07-23 08:29:35', '2024-07-23 08:29:35'),
+(34, 13, 8, 'images/productsAttr/1722244470.jpg', '2024-07-29 03:44:30', '2024-07-29 03:44:30'),
+(35, 13, 8, 'images/productsAttr/1722244470.png', '2024-07-29 03:44:30', '2024-07-29 03:44:30'),
+(36, 14, 9, 'images/productsAttr/1722244579.png', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(37, 14, 9, 'images/productsAttr/1722244579.jpg', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(38, 14, 10, 'images/productsAttr/1722244579.png', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(39, 14, 10, 'images/productsAttr/1722244579.png', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(40, 14, 10, 'images/productsAttr/1722244579.jpg', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(41, 14, 10, 'images/productsAttr/1722244579.png', '2024-07-29 03:46:19', '2024-07-29 03:46:19'),
+(42, 15, 11, 'images/productsAttr/1722244770.png', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(43, 15, 11, 'images/productsAttr/1722244770.jpg', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(44, 15, 12, 'images/productsAttr/1722244770.png', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(45, 15, 12, 'images/productsAttr/1722244770.jpg', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(46, 15, 12, 'images/productsAttr/1722244770.png', '2024-07-29 03:49:30', '2024-07-29 03:49:30'),
+(47, 16, 13, 'images/productsAttr/1722245135-lenovo.png.png', '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(48, 16, 13, 'images/productsAttr/1722245135-Screenshot 2022-12-05 200145.jpg.jpg', '2024-07-29 03:55:35', '2024-07-29 03:55:35'),
+(49, 16, 13, 'images/productsAttr/1722245136-laptop.jpg.jpg', '2024-07-29 03:55:36', '2024-07-29 03:55:36'),
+(50, 16, 14, 'images/productsAttr/1722245136-indian-boy-face-avatar-cartoon-vector-25919486.jpg.jpg', '2024-07-29 03:55:36', '2024-07-29 03:55:36'),
+(51, 16, 14, 'images/productsAttr/1722245136-dell.jpg.jpg', '2024-07-29 03:55:36', '2024-07-29 03:55:36'),
+(52, 16, 14, 'images/productsAttr/1722245136-car.png.png', '2024-07-29 03:55:36', '2024-07-29 03:55:36'),
+(53, 16, 14, 'images/productsAttr/1722245136-hp.png.png', '2024-07-29 03:55:36', '2024-07-29 03:55:36');
 
 -- --------------------------------------------------------
 
@@ -375,7 +474,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin', NULL, NULL);
+(1, 'Admin', 'admin', NULL, NULL),
+(2, 'Customer', 'customer', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -452,7 +552,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `phone`, `address`, `website_link`, `github_link`, `twitter_link`, `instagram_link`, `facebook_link`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$Dp4YqdzD.KfUvHEigzctmeyKYbDWZEMju2o0LbDu.338REnxpWsSa', NULL, '234', 'sdfwer', 'website link', 'github link', 'twitter link', 'instagram link', 'facebook link', 'image/admin1720531802.jpg', '2024-07-04 07:01:48', '2024-07-10 06:29:18');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$Dp4YqdzD.KfUvHEigzctmeyKYbDWZEMju2o0LbDu.338REnxpWsSa', NULL, '234', 'sdfwer', 'website link', 'github link', 'twitter link', 'instagram link', 'facebook link', 'image/admin1720531802.jpg', '2024-07-04 07:01:48', '2024-07-30 03:09:09'),
+(6, 'kp-customer', 'kpkamlesh@gmail.com', NULL, '$2y$10$4BaOZm6YzyqC8Mx2rw7eXu6EVsmTQOd219DoqpkUBDM8DSOtpw9fi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-07-30 00:49:18', '2024-07-30 03:11:19');
 
 -- --------------------------------------------------------
 
@@ -471,7 +572,8 @@ CREATE TABLE `user_roles` (
 --
 
 INSERT INTO `user_roles` (`id`, `user_id`, `role_id`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(5, 6, 2);
 
 --
 -- Indexes for dumped tables
@@ -680,37 +782,37 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `product_attrs`
 --
 ALTER TABLE `product_attrs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_attr_images`
 --
 ALTER TABLE `product_attr_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -728,13 +830,13 @@ ALTER TABLE `taxes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
 --
 ALTER TABLE `user_roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
