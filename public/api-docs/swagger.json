@@ -18,6 +18,49 @@
 
     ],
     "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User register",
+                "operationId": "register",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{
+                    "APIKeyHeader": []
+                }],
+                "parameters": [{
+                        "name": "name",
+                        "in": "formData",
+                        "description": "Enter Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "Enter Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password",
+                        "required": true,
+                        "type": "string"
+                    }
+
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data"
+                    }
+                }
+            }
+        },
         "/auth/login": {
             "post": {
                 "tags": [
@@ -53,8 +96,94 @@
                     }
                 }
             }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User data show",
+                "operationId": "showUser",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{
+                    "APIKeyHeader": []
+                }],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Enter Bearer Token",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Data"
+                    }
+                }
+            }
+        },
+        "/updateUser": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User data update",
+                "operationId": "updateUser",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{
+                    "APIKeyHeader": []
+                }],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Enter Bearer Token",
+                    "required": true,
+                    "type": "string"
+                }, {
+                    "name": "name",
+                    "in": "formData",
+                    "description": "Enter Name",
+                    "required": true,
+                    "type": "string"
+                }, ],
+                "responses": {
+                    "200": {
+                        "description": "Data"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User logout",
+                "operationId": "logoutUser",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [{
+                    "APIKeyHeader": []
+                }],
+                "parameters": [{
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Enter Bearer Token",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Data"
+                    }
+                }
+            }
         }
-
 
 
     },
