@@ -64,3 +64,23 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Install vue with laravel 
+
+- install vue
+ npm install vue@latest
+
+- install vite js to work with vue 
+ npm install @vitejs/plugin-vue
+
+- If above command not working then use below command. And use your package.json vite version instead of 4.0.0 
+ npm i @vitejs/plugin-vue@4.0.0
+
+- Install NPM
+ npm install
+
+- To install vue router
+ npm i vue-router@next
+
+- execute the application
+ npm run dev
